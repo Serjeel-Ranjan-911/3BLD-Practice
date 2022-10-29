@@ -29,6 +29,9 @@ function GameCorner(props) {
 	const startGame = () => {
 		if (gameState.gameActive) return;
 
+		setGameReport(null);
+		setStartTime(Date.now());
+
 		console.log("Starting game...");
 		setCountDown(3);
 		setTimeout(() => setCountDown(2), 1000);
@@ -121,7 +124,6 @@ function GameCorner(props) {
 					activeColor={gameState.activeSticker}
 				/>
 			)}
-
 			{gameState.gameActive && (
 				<div className="scoreBoard">
 					<>
