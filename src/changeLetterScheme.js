@@ -72,7 +72,7 @@ function ChangeLetterScheme(props) {
 						{edgeScheme["UF"]}
 					</div>
 					<div className="sticker" style={{ gridRow: 2, gridColumn: 1 }}>
-						{edgeScheme["UR"]}
+						{edgeScheme["UL"]}
 					</div>
 
 					<div className="sticker" style={{ gridRow: 2, gridColumn: 2 }}>
