@@ -138,18 +138,24 @@ function GameCorner(props) {
 			{gameReport && (
 				<div className="gameReport">
 					<p className="reportText">
-						Time Taken - {gameReport?.time?.minutes} min :{" "}
+						Total Time - {gameReport?.time?.minutes} min :{" "}
 						{gameReport?.time?.seconds} sec
 					</p>
 					<p className="reportText">
 						Accuracy -{" "}
 						{(
-							((gameReport.count - gameReport.penalty) * 100) /
-							gameReport.count
+							((gameReport.score) * 100) /
+							(gameReport.score + gameReport.penalty)
 						).toFixed(1)}
 						%
 					</p>
 					<p className="reportText">Count - {gameReport.count} </p>
+					<p className="reportText">
+						Avg time -{" "}
+						{(60 * gameReport?.time?.minutes + gameReport?.time?.seconds) /
+							gameReport.count}
+						{" "}sec
+					</p>
 				</div>
 			)}
 			{gameState.gameActive && (

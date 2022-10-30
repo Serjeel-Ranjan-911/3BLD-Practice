@@ -74,8 +74,7 @@ input[type="number"]::-webkit-outer-spin-button {
 	font-size: 2rem;
 	color: rgb(92 140 205);
 	border: 1px solid rgb(186, 152, 189);
-	text-shadow: -1px 0 #c9b7e7, 0 1px #c9b7e7,
-		1px 0 #c9b7e7, 0 -1px #c9b7e7;
+	text-shadow: -1px 0 #c9b7e7, 0 1px #c9b7e7, 1px 0 #c9b7e7, 0 -1px #c9b7e7;
 }
 
 .instructions {
@@ -84,7 +83,7 @@ input[type="number"]::-webkit-outer-spin-button {
 	margin-right: auto;
 }
 
-.scoreBoard{
+.scoreBoard {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -98,12 +97,12 @@ input[type="number"]::-webkit-outer-spin-button {
 	align-items: center;
 }
 
-.timerDisplay{
+.timerDisplay {
 	font-size: 3rem;
 	color: #fff;
 }
 
-.gameReport{
+.gameReport {
 	position: absolute;
 	right: 10px;
 	bottom: 10px;
@@ -111,7 +110,12 @@ input[type="number"]::-webkit-outer-spin-button {
 	background-color: rgba(183, 0, 255, 0.479);
 }
 
-.reportText{
+.reportText {
 	font-size: 2rem;
 	color: #fff;
+}
+
+.stickerGlow {
+	z-index: -1;
+	box-shadow: 0 0 15px 8px #fff, 0 0 25px 15px #b400ff, 0 0 45px 22px #ff00d4;
 }

@@ -24,6 +24,7 @@ function EdgeSticker(props) {
 			}}
 		>
 			<div
+				className={activeColor === props.piece[0] ? "stickerGlow" : ""}
 				style={{
 					width: "100px",
 					height: "100px",
@@ -34,11 +35,10 @@ function EdgeSticker(props) {
 					transformStyle: "flat",
 					transform: "rotateX(45deg) translate(-50%, -50%)",
 					borderRadius: "15px 15px 0 0",
-					boxShadow:
-						activeColor === props.piece[0] ? "#ff159a 0px 0px 20px 4px" : "",
 				}}
 			></div>
 			<div
+				className={activeColor === props.piece[1] ? "stickerGlow" : ""}
 				style={{
 					width: "100px",
 					height: "100px",
@@ -49,10 +49,6 @@ function EdgeSticker(props) {
 					transformStyle: "preserve-3d",
 					transform: "rotateX(-45deg) translate(-50%, 50%)",
 					borderRadius: "0 0 15px 15px",
-					boxShadow:
-						activeColor === props.piece[1]
-							? "rgb(255 21 154) 0 10px 20px 4px"
-							: "",
 				}}
 			></div>
 		</div>

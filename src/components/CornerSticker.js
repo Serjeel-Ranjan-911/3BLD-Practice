@@ -26,6 +26,7 @@ function CornerSticker(props) {
 			}}
 		>
 			<div
+				className={activeColor === props.piece[0] ? "stickerGlow" : ""}
 				style={{
 					width: "100px",
 					height: "100px",
@@ -35,11 +36,10 @@ function CornerSticker(props) {
 					left: "25px",
 					transform: "rotateX(45deg) rotateZ(45deg) translate(-50%, -50%)",
 					borderRadius: "15px 0 0 0",
-					boxShadow:
-						activeColor === props.piece[0] ? "#ff159a 0px 0px 20px 4px" : "",
 				}}
 			></div>
 			<div
+				className={activeColor === props.piece[1] ? "stickerGlow" : ""}
 				style={{
 					width: "100px",
 					height: "100px",
@@ -50,13 +50,10 @@ function CornerSticker(props) {
 					transform:
 						"rotateX(45deg) rotateZ(-45deg) rotateY(90deg) translate(50%, -50%)",
 					borderRadius: "0 15px 0 0",
-					boxShadow:
-						activeColor === props.piece[1]
-							? "rgb(255 21 154) 10px -4px 16px 4px"
-							: "",
 				}}
 			></div>
 			<div
+				className={activeColor === props.piece[2] ? "stickerGlow" : ""}
 				style={{
 					width: "100px",
 					height: "100px",
@@ -67,10 +64,6 @@ function CornerSticker(props) {
 					transform:
 						"rotateX(45deg) rotateZ(45deg) rotateY(-90deg) translate(-50%, -50%)",
 					borderRadius: "15px 0 0 0",
-					boxShadow:
-						activeColor === props.piece[2]
-							? "rgb(255 21 154) -10px -4px 16px 4px"
-							: "",
 				}}
 			></div>
 		</div>
