@@ -119,3 +119,20 @@ input[type="number"]::-webkit-outer-spin-button {
 	z-index: -1;
 	box-shadow: 0 0 15px 8px #fff, 0 0 25px 15px #b400ff, 0 0 45px 22px #ff00d4;
 }
+
+@keyframes grow{
+	0%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+
+.activePiece {
+	animation: grow 5s infinite cubic-bezier(.91,1.6,.46,.99);
+}
+

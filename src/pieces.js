@@ -22,8 +22,8 @@ const edges = [
 	["DL", "LD"],
 	["FL", "LF"],
 	["FR", "RF"],
-	["BL", "LB"],
-	["BR", "RB"],
+	["BL", "RB"],
+	["BR", "LB"],
 ];
 
 export { corners, edges };

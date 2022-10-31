@@ -17,55 +17,62 @@ function CornerSticker(props) {
 
 	return (
 		<div
+			{...props.restProps}
 			style={{
-				position: "relative",
-				width: "150px",
-				height: "150px",
 				display: "inline-block",
-				transform: `rotateZ(${Math.floor(Math.random() * 360)}deg)`,
 			}}
 		>
 			<div
-				className={activeColor === props.piece[0] ? "stickerGlow" : ""}
 				style={{
-					width: "100px",
-					height: "100px",
-					backgroundColor: firstColor,
-					position: "absolute",
-					top: "25px",
-					left: "25px",
-					transform: "rotateX(45deg) rotateZ(45deg) translate(-50%, -50%)",
-					borderRadius: "15px 0 0 0",
+					position: "relative",
+					width: "150px",
+					height: "140px",
+					display: "inline-block",
+					...props.restStyle,
 				}}
-			></div>
-			<div
-				className={activeColor === props.piece[1] ? "stickerGlow" : ""}
-				style={{
-					width: "100px",
-					height: "100px",
-					backgroundColor: secondColor,
-					position: "absolute",
-					top: "25px",
-					left: "25px",
-					transform:
-						"rotateX(45deg) rotateZ(-45deg) rotateY(90deg) translate(50%, -50%)",
-					borderRadius: "0 15px 0 0",
-				}}
-			></div>
-			<div
-				className={activeColor === props.piece[2] ? "stickerGlow" : ""}
-				style={{
-					width: "100px",
-					height: "100px",
-					backgroundColor: thirdColor,
-					position: "absolute",
-					top: "25px",
-					left: "25px",
-					transform:
-						"rotateX(45deg) rotateZ(45deg) rotateY(-90deg) translate(-50%, -50%)",
-					borderRadius: "15px 0 0 0",
-				}}
-			></div>
+			>
+				<div
+					className={activeColor === props.piece[0] ? "stickerGlow" : ""}
+					style={{
+						width: "100px",
+						height: "100px",
+						backgroundColor: firstColor,
+						position: "absolute",
+						top: "25px",
+						left: "25px",
+						transform: "rotateX(45deg) rotateZ(45deg) translate(-50%, -50%)",
+						borderRadius: "15px 0 0 0",
+					}}
+				></div>
+				<div
+					className={activeColor === props.piece[1] ? "stickerGlow" : ""}
+					style={{
+						width: "100px",
+						height: "100px",
+						backgroundColor: secondColor,
+						position: "absolute",
+						top: "25px",
+						left: "25px",
+						transform:
+							"rotateX(45deg) rotateZ(-45deg) rotateY(90deg) translate(50%, -50%)",
+						borderRadius: "0 15px 0 0",
+					}}
+				></div>
+				<div
+					className={activeColor === props.piece[2] ? "stickerGlow" : ""}
+					style={{
+						width: "100px",
+						height: "100px",
+						backgroundColor: thirdColor,
+						position: "absolute",
+						top: "25px",
+						left: "25px",
+						transform:
+							"rotateX(45deg) rotateZ(45deg) rotateY(-90deg) translate(-50%, -50%)",
+						borderRadius: "15px 0 0 0",
+					}}
+				></div>
+			</div>
 		</div>
 	);
 }

@@ -15,12 +15,18 @@ function EdgeSticker(props) {
 
 	return (
 		<div
+			{...props.restProps}
+			style={{
+				display: "inline-block",
+			}}
+		>
+		<div
 			style={{
 				position: "relative",
-				width: "150px",
+				width: "50px",
 				height: "150px",
 				display: "inline-block",
-				transform: `rotateZ(${Math.floor(Math.random() * 360)}deg)`,
+				...props.restStyle,
 			}}
 		>
 			<div
@@ -51,7 +57,7 @@ function EdgeSticker(props) {
 					borderRadius: "0 0 15px 15px",
 				}}
 			></div>
-		</div>
+		</div></div>
 	);
 }
 

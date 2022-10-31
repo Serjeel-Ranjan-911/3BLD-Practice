@@ -12,7 +12,6 @@ function GameCorner(props) {
 		sequence: [],
 		score: 0,
 		penalty: 0,
-		activeSticker: null,
 	});
 
 	const [countDown, setCountDown] = useState(0);
@@ -42,7 +41,11 @@ function GameCorner(props) {
 			//generating random numbers and store them in sequence
 			let newSequence = [];
 			for (let i = 0; i < gameState.gameSize; i++) {
-				newSequence.push(Math.floor(Math.random() * 12));
+				newSequence.push({
+					piece: Math.floor(Math.random() * 12),
+					sticker: Math.floor(Math.random() * 2),
+					rotation: Math.floor(Math.random() * 360),
+				});
 			}
 			setGameState({
 				...gameState,
@@ -51,7 +54,6 @@ function GameCorner(props) {
 				current: 0,
 				score: 0,
 				penalty: 0,
-				activeSticker: edges[newSequence[0]][Math.floor(Math.random() * 2)],
 			});
 		}, 3100);
 	};
@@ -70,7 +72,6 @@ function GameCorner(props) {
 			...gameState,
 			gameActive: false,
 			score: gameState.score + 1,
-			activeSticker: null,
 		});
 	};
 
@@ -82,7 +83,14 @@ function GameCorner(props) {
 		}
 
 		if (gameState.gameActive) {
-			if (event.key.toUpperCase() === edgeStickers[gameState.activeSticker]) {
+			if (
+				event.key.toUpperCase() ===
+				edgeStickers[
+					edges[gameState.sequence[gameState.current].piece][
+						gameState.sequence[gameState.current].sticker
+					]
+				]
+			) {
 				playSuccessSound();
 				if (gameState.current === gameState.gameSize - 1) {
 					//game over
@@ -94,10 +102,6 @@ function GameCorner(props) {
 					...gameState,
 					current: gameState.current + 1,
 					score: gameState.score + 1,
-					activeSticker:
-						edges[gameState.sequence[gameState.current + 1]][
-							Math.floor(Math.random() * 2)
-						],
 				});
 			} else {
 				playFailureSound();
@@ -119,10 +123,63 @@ function GameCorner(props) {
 			)}
 			{countDown > 0 && <p className="countNumber">{countDown}</p>}
 			{gameState.gameActive && (
-				<EdgeSticker
-					piece={edges[gameState.sequence[gameState.current]]}
-					activeColor={gameState.activeSticker}
-				/>
+				<div
+					style={{
+						transform: "translate(25%, 0)",
+					}}
+				>
+					<EdgeSticker
+						piece={edges[gameState.sequence[gameState.current].piece]}
+						activeColor={
+							edges[gameState.sequence[gameState.current].piece][
+								gameState.sequence[gameState.current].sticker
+							]
+						}
+						restStyle={{
+							marginRight: "10rem",
+							transform: `rotateZ(${
+								gameState.sequence[gameState.current].rotation
+							}deg)`,
+						}}
+						restProps={{
+							className: "activePiece",
+						}}
+					/>
+
+					{gameState.current + 1 < gameState.gameSize && (
+						<EdgeSticker
+							piece={edges[gameState.sequence[gameState.current + 1].piece]}
+							activeColor={
+								edges[gameState.sequence[gameState.current + 1].piece][
+									gameState.sequence[gameState.current + 1].sticker
+								]
+							}
+							restStyle={{
+								marginRight: "7rem",
+								transform: `rotateZ(${
+									gameState.sequence[gameState.current + 1].rotation
+								}deg) scale(0.7)`,
+							}}
+						/>
+					)}
+
+					{gameState.current + 2 < gameState.gameSize && (
+						<EdgeSticker
+							piece={edges[gameState.sequence[gameState.current + 2].piece]}
+							activeColor={
+								edges[gameState.sequence[gameState.current + 2].piece][
+									gameState.sequence[gameState.current + 2].sticker
+								]
+							}
+							restStyle={{
+								marginRight: "7rem",
+								transform: `rotateZ(${
+									gameState.sequence[gameState.current + 2].rotation
+								}deg) scale(0.7)`,
+							}}
+						/>
+					)}
+				</div>
 			)}
 			{gameState.gameActive && (
 				<div className="scoreBoard">
@@ -144,7 +201,7 @@ function GameCorner(props) {
 					<p className="reportText">
 						Accuracy -{" "}
 						{(
-							((gameReport.score) * 100) /
+							(gameReport.score * 100) /
 							(gameReport.score + gameReport.penalty)
 						).toFixed(1)}
 						%
@@ -153,8 +210,8 @@ function GameCorner(props) {
 					<p className="reportText">
 						Avg time -{" "}
 						{(60 * gameReport?.time?.minutes + gameReport?.time?.seconds) /
-							gameReport.count}
-						{" "}sec
+							gameReport.count}{" "}
+						sec
 					</p>
 				</div>
 			)}
